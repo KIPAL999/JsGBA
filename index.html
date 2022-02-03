@@ -1,0 +1,158 @@
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>gbajs2</title>
+	<!-- 移动端 -->
+	<link rel="stylesheet" type="text/css" href="./css/util.css" media="screen and (max-width:750px)">
+	<link rel="stylesheet" type="text/css" href="./css/mainMobile.css" media="screen and (max-width:750px)" />
+	<!-- PC端 -->
+	<link rel="stylesheet" type="text/css" href="./css/mainPc.css" media="screen and (min-width:750px)" />
+	<script src="js/util copy.js"></script>
+	<script src="js/core.js"></script>
+	<script src="js/arm.js"></script>
+	<script src="js/thumb.js"></script>
+	<script src="js/mmu.js"></script>
+	<script src="js/io.js"></script>
+	<script src="js/audio.js"></script>
+	<script src="js/video.js"></script>
+	<script src="js/video/proxy.js"></script>
+	<script src="js/video/software.js"></script>
+	<script src="js/irq.js"></script>
+	<script src="js/keypad.js"></script>
+	<script src="js/sio.js"></script>
+	<script src="js/savedata.js"></script>
+	<script src="js/gpio.js"></script>
+	<script src="js/gba.js"></script>
+	<script src="resources/xhr.js"></script>
+	<script src="resources/biosbin.js"></script>
+	<!-- 加载摇杆 -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/nipplejs/0.8.7/nipplejs.min.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+	<!-- 加载自定义 -->
+	<script src="resources/cust.js"></script>
+	<script>
+		let gba;
+		let runCommands = [];
+	</script>
+</head>
+
+<body>
+	<div class="gbaPad">
+		<div class="cav">
+			<canvas id="screen" width="256" height="280"></canvas>
+			<p id="speed"></p>
+			<img src="./resources/gameIco.png" onclick="start()" id="start">
+		</div>
+		<section id="controls">
+			<div id="ingame" class="hidden">
+				<button id="pause" onclick="togglePause()">暂停</button>
+				<button onclick="save()">保存</button>
+				<button onclick="load()">加载</button>
+				<button onclick="fullScreen()">全屏</button>
+			</div>
+		</section>
+		<div class="cur">
+			<!-- 功能键 -->
+			<div class="function">
+				<button>退出</button>
+				<button ontouchstart="gameDown('SELECT',event)" ontouchend="gameUp('SELECT',event)"
+					id="l-button">选择</button>
+				<button ontouchstart="gameDown('START',event)" ontouchend="gameUp('START',event)"
+					id="r-button">开始</button>
+				<button>保存</button>
+			</div>
+			<!-- 摇杆容器 -->
+			<div id="direction"></div>
+			<!-- A,B,L,R -->
+			<div class="action">
+				<div class="action0">
+					<button ontouchstart="gameDown(this.innerHTML,event)" ontouchend="gameUp(this.innerHTML,event)"
+						id="l-button">L</button>
+					<button ontouchstart="gameDown(this.innerHTML,event)" ontouchend="gameUp(this.innerHTML,event)"
+						id="r-button">R</button>
+				</div>
+				<div class="action0">
+					<button ontouchstart="gameDown(this.innerHTML,event)" ontouchend="gameUp(this.innerHTML,event)"
+						id="b-button">B</button>
+					<button ontouchstart="gameDown(this.innerHTML,event)" ontouchend="gameUp(this.innerHTML,event)"
+						id="a-button">A</button>
+				</div>
+			</div>
+		</div>
+		<table id="mapping">
+			<tr>
+				<td>向上</td>
+				<td>------</td>
+				<td>W</td>
+			</tr>
+			<tr>
+				<td>向下</td>
+				<td>------</td>
+				<td>S</td>
+			</tr>
+			<tr>
+				<td>向左</td>
+				<td>------</td>
+				<td>A</td>
+			</tr>
+			<tr>
+				<td>向右</td>
+				<td>------</td>
+				<td>D</td>
+			</tr>
+			<tr>
+				<td>按键A</td>
+				<td>------</td>
+				<td>K</td>
+			</tr>
+			<tr>
+				<td>按键B</td>
+				<td>------</td>
+				<td>J</td>
+			</tr>
+			<tr>
+				<td>按键L</td>
+				<td>------</td>
+				<td>U</td>
+			</tr>
+			<tr>
+				<td>按键R</td>
+				<td>------</td>
+				<td>I</td>
+			</tr>
+			<tr>
+				<td>Start</td>
+				<td>------</td>
+				<td>Enter</td>
+			</tr>
+			<tr>
+				<td>Select</td>
+				<td>------</td>
+				<td>Ctrl</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+<script>
+	//实例1
+	var joystick = new Joystick({
+		el: "#direction",//容器
+		color: "#bdb8cd",//摇杆颜色
+		size: 150,//摇杆大小
+		isFourBtn: false,//4键模式
+		keyCodes: [87, 83, 65, 68],//绑定 上下左右 到 WSAD键
+		btn_down_fn: function (e) {
+			gba.keypad.roker(e.keyCode, 1)
+			vibrate()
+		},//按下时的回调
+		btn_up_fn: function (e) {
+			gba.keypad.roker(e.keyCode, 2)
+		}//释放时的回调
+	})
+</script>
+
+</html>

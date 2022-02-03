@@ -1,0 +1,130 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body .gbaPad {
+  width: 100%;
+  height: 100%;
+}
+body .gbaPad .cav {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  background-color: #2d2e2a;
+}
+body .gbaPad .cav #screen {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* webkit */
+  image-rendering: pixelated;
+  /* firefox */
+  image-rendering: optimizespeed;
+}
+body .gbaPad .cav #speed {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+body .gbaPad .cav #start {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3rem;
+}
+body .gbaPad #controls {
+  display: none;
+}
+body .gbaPad .cur {
+  position: relative;
+  width: 100%;
+  height: 40%;
+  background-color: #4f3a83;
+  /* 摇杆容器 */
+}
+body .gbaPad .cur #direction {
+  position: absolute !important;
+  left: 0;
+  bottom: 10%;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 3px solid #d4b012;
+  background-color: #fff;
+}
+body .gbaPad .cur .function {
+  height: 1.8rem;
+  display: flex;
+}
+body .gbaPad .cur .function button {
+  user-select: none;
+  text-align: center;
+  margin: 0.4rem;
+  padding: 0;
+  width: 2rem;
+  height: 1rem;
+  outline: 0;
+  border: 0;
+  background-color: #000;
+  color: red;
+  border-radius: 1rem;
+  font-size: 0.5rem;
+}
+body .gbaPad .cur .function button:first-of-type {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.4rem;
+}
+body .gbaPad .cur .action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 7rem;
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0;
+}
+body .gbaPad .cur .action button {
+  user-select: none;
+  width: 3rem;
+  height: 3rem;
+  background: #c2bcd1;
+  border-radius: 50%;
+  outline: 0;
+  font-weight: bold;
+  font-size: 0.5rem;
+  font-style: italic;
+  color: #688098;
+  border: 1px solid #5a6161;
+}
+body .gbaPad .cur .action .action0 {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .gbaPad .cur .action .action0:last-of-type {
+  margin-top: 0.4rem;
+}
+#crash {
+  margin-top: 100px;
+  margin-bottom: -356px;
+}
+.dead {
+  display: none;
+}

@@ -1,0 +1,98 @@
+body {
+    background : no-repeat top center, skyblue;
+    text-align : center;
+    margin     : 0;
+    color      : white;
+    overflow   : hidden;
+    font-size  : 15px;
+    height     : 100%;
+
+    .gbaPad {
+        margin-top: 10%;
+        // 画板
+        .cav {
+            position        : relative;
+            width           : 650px;
+            height          : 500px;
+            margin: 0 auto;
+        // screen
+        #screen {
+            width: 650;
+            height: 500;
+            background-color: #000;
+        }
+
+            // p
+            #speed {
+                position : absolute;
+                top      : 50%;
+                left     : 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            // 图片
+            #start {
+                width    : 150px;
+                height   : 150px;
+                position : absolute;
+                top      : 50%;
+                left     : 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        // 说明
+        #controls {
+            width                 : 650px;
+            margin                : 0 auto;
+            #ingame {
+                margin-top     : 2%;
+                width          : 650px;
+                display        : flex;
+                justify-content: space-between;
+                align-items    : center;
+                
+                button {
+                    background-color: red;
+                    border          : 0;
+                    font-size       : 20px;
+                    border-radius   : 10%;
+                    padding         : 6px 15px;
+                    font-weight     : bold;
+                    color           : white;
+                    font-weight     : bold;
+                }
+            }
+        }
+
+        // 控制器
+        .cur {
+            display: none;
+        }
+
+        // 说明
+        #mapping {
+            text-align    : center;
+            border-spacing: 1px 5px;
+            position      : fixed;
+            top           : 40%;
+            transform     : translateY(-40%);
+            right         : 10%;
+
+            td {
+                padding    : 5px 23px;
+                display    : table-cell;
+                color      : red;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.hidden {
+    opacity: 0 !important;
+}
+
+.dead {
+    display: none;
+}

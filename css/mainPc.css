@@ -1,0 +1,80 @@
+body {
+  background: no-repeat top center, skyblue;
+  text-align: center;
+  margin: 0;
+  color: white;
+  overflow: hidden;
+  font-size: 15px;
+  height: 100%;
+}
+body .gbaPad {
+  margin-top: 10%;
+}
+body .gbaPad .cav {
+  position: relative;
+  width: 650px;
+  height: 500px;
+  margin: 0 auto;
+}
+body .gbaPad .cav #screen {
+  width: 650;
+  height: 500;
+  background-color: #000;
+}
+body .gbaPad .cav #speed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .gbaPad .cav #start {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .gbaPad #controls {
+  width: 650px;
+  margin: 0 auto;
+}
+body .gbaPad #controls #ingame {
+  margin-top: 2%;
+  width: 650px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .gbaPad #controls #ingame button {
+  background-color: red;
+  border: 0;
+  font-size: 20px;
+  border-radius: 10%;
+  padding: 6px 15px;
+  color: white;
+  font-weight: bold;
+}
+body .gbaPad .cur {
+  display: none;
+}
+body .gbaPad #mapping {
+  text-align: center;
+  border-spacing: 1px 5px;
+  position: fixed;
+  top: 40%;
+  transform: translateY(-40%);
+  right: 10%;
+}
+body .gbaPad #mapping td {
+  padding: 5px 23px;
+  display: table-cell;
+  color: red;
+  font-weight: bold;
+}
+.hidden {
+  opacity: 0 !important;
+}
+.dead {
+  display: none;
+}
